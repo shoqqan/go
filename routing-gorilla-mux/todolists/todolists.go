@@ -27,7 +27,7 @@ func InitTodolistsRouter(parentRouter *mux.Router) {
 	todolistsRouter := parentRouter.PathPrefix("/todolists").Subrouter()
 
 	todolistsRouter.HandleFunc("", createTodolist).Methods("POST").Schemes("http")
-	todolistsRouter.HandleFunc("{id}", updateTodolist).Methods("PATCH").Schemes("http")
+	todolistsRouter.HandleFunc("/{id}", updateTodolist).Methods("PATCH").Schemes("http")
 
 	err := parentRouter.Walk(func(route *mux.Route, router *mux.Router, ancestors []*mux.Route) error {
 		path, _ := route.GetPathTemplate()
